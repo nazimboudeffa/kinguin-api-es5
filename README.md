@@ -1,0 +1,1 @@
+# kinguin-api-es5
