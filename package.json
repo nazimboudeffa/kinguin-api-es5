@@ -1,0 +1,27 @@
+{
+  "name": "kinguin-api-es5",
+  "version": "1.0.0",
+  "description": "Kinguin API in ES5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nazimboudeffa/kinguin-api-es5.git"
+  },
+  "keywords": [
+    "kinguin",
+    "api"
+  ],
+  "author": "Nazim Boudeffa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nazimboudeffa/kinguin-api-es5/issues"
+  },
+  "homepage": "https://github.com/nazimboudeffa/kinguin-api-es5#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0"
+  }
+}
