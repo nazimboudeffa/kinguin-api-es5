@@ -1,1 +1,1 @@
-module.exports = require('./src/kinguin');
+module.exports = require('./src/kinguin.js');

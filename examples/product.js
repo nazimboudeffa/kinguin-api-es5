@@ -1,3 +1,5 @@
 const kinguin = require('../index.js');
 
-kinguin(true).getProductDetails('64435');
+var k = new kinguin(true);
+
+k.getProductDetails('64435');
