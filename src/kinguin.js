@@ -41,6 +41,19 @@ Kinguin = function(key = process.env.KINGUIN_API_KEY, isProd = 'false', version 
       })
   };
 
+  this.getProductIdWithSteam = async function (steamId) {
+    await this.axiosInstance.get('/products?steam=' + steamId, { httpsAgent: agent })
+    .then(function (response) {
+      console.log(response.data.results[0].kinguinId);
+    })
+    .then(function (response) {
+      return response;
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+};
+
 }
 
 module.exports = Kinguin;
