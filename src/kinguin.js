@@ -1,6 +1,5 @@
 const axios = require('axios');
 const https = require('https');
-require('dotenv').config();
 
 const agent = new https.Agent({
   rejectUnauthorized: false
@@ -8,19 +7,19 @@ const agent = new https.Agent({
 
 const API_URL = {
     production: 'https://gateway.kinguin.net/esa/api/',
-    sandbox: 'https://gateway.sandbox.kinguin.net/esa/api'
+    sandbox: 'https://gateway.sandbox.kinguin.net/esa/api/'
 }
 
 var Kinguin;
 
-Kinguin = function(key = process.env.KINGUIN_API_KEY, isProd = 'false', version = 'v1'){
+Kinguin = function(key, isProd, version){
 
   this.key = key;
-
   this.version = version;
-
-  this.createUrl = function (isProd, version = 'v1') {
+  this.createUrl = function (isProd, version = this.version) {
+    console.log(isProd);
     return (isProd ? API_URL.production : API_URL.sandbox) + version
+    
   };
 
   this.axiosInstance = axios.create({

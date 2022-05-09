@@ -1,6 +1,7 @@
+require('dotenv').config();
 const kinguin = require('../index.js');
 
-var king = new kinguin();
+var king = new kinguin(process.env.KINGUIN_API_KEY, false, 'v1');
 
 //Trying with CyberPunk2077
 
