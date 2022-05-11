@@ -15,9 +15,9 @@ var Kinguin;
 Kinguin = function(key, isProd, version){
 
   this.key = key;
-  this.isProd = isProd;
   this.version = version;
-  this.createUrl = function (isProd, version) {
+  this.createUrl = function (isProd, version = this.version) {
+    console.log('Prod : '+isProd);
     return (isProd ? API_URL.production : API_URL.sandbox) + version 
   };
 
@@ -52,41 +52,18 @@ Kinguin = function(key, isProd, version){
     })
   };
 
-  this.getProductByName = async function (name) {
-    await axios ({
-      url: this.createUrl(this.isProd, this.version)+'/products?name=' + name,
-      method: 'GET',
-      httpsAgent: agent,
-      headers: {
-        'Accept': 'application/json',
-        'api-ecommerce-auth': this.key
-      }
+  this.getProductByName = function (name) {
+    return this.axiosInstance.get('/products?name=' + name, { httpsAgent: agent })
+    .then(function (response) {
+      //console.log(response.data);
     })
-    .then(response => {
-      let data = response.data
-      console.log(data);
-      return data
+    .then(function (response) {
+      //return response.data;
     })
-    .then(response => {
-      // return response.data
-    })
-    .catch(err => {
-      console.error(err);
+    .catch(function (error) {
+      console.log(error);
     })
   };
-    
-  // this.getProductByName = function (name) {  
-  //   this.axiosInstance.get('/products?name=' + name, { httpsAgent: agent })
-  //   .then(function (response) {
-  //     //console.log(response.data);
-  //   })
-  //   .then(function (response) {
-  //     //return response.data;
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   })
-  // };
   
 }
 
