@@ -1,7 +1,7 @@
 require('dotenv').config();
 const kinguin = require('../index.js');
 
-var king = new kinguin(process.env.KINGUIN_API_KEY, false, 'v1');
+var king = new kinguin(process.env.KINGUIN_API_KEY, true, 'v1');
 
 //Trying with CyberPunk2077
 
@@ -9,4 +9,4 @@ var king = new kinguin(process.env.KINGUIN_API_KEY, false, 'v1');
 
 //king.getProductBySteamId('1091500')
 
-king.getProductByName('Cyberpunk 2077');
+console.log(king.getProductByName('Cyberpunk 2077'));

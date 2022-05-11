@@ -17,9 +17,8 @@ Kinguin = function(key, isProd, version){
   this.key = key;
   this.version = version;
   this.createUrl = function (isProd, version = this.version) {
-    console.log(isProd);
-    return (isProd ? API_URL.production : API_URL.sandbox) + version
-    
+    console.log('Prod : '+isProd);
+    return (isProd ? API_URL.production : API_URL.sandbox) + version 
   };
 
   this.axiosInstance = axios.create({
@@ -46,7 +45,7 @@ Kinguin = function(key, isProd, version){
       console.log(response.data);
     })
     .then(function (response) {
-      return response;
+      return response.data;
     })
     .catch(function (error) {
       console.log(error);
@@ -59,13 +58,13 @@ Kinguin = function(key, isProd, version){
       console.log(response.data);
     })
     .then(function (response) {
-      return response;
+      return response.data;
     })
     .catch(function (error) {
       console.log(error);
     })
   };
-
+  
 }
 
 module.exports = Kinguin;
