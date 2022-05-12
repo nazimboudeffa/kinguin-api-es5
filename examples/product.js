@@ -9,4 +9,11 @@ var kg = new kinguin(process.env.KINGUIN_API_KEY, true, 'v1');
 
 //kg.getProductBySteamId('1091500')
 
-console.log(kg.getProductByName('Cyberpunk 2077'));
+async function getResponse () {
+    await kg.getProductByName('Cyberpunk 2077')
+    .then(response => console.log(response));
+}
+
+
+
+console.log(getResponse());

@@ -52,28 +52,41 @@ Kinguin = function(key, isProd, version){
     })
   };
 
-  this.getProductByName = async function (name) {
-    await axios ({
-      url: this.createUrl(this.isProd, this.version)+'/products?name=' + name,
-      method: 'GET',
+  this.getProductByName = function (name) {
+    return axios.get ('https://gateway.kinguin.net/esa/api/v1'+'/products?name=' + name,
+    {
       httpsAgent: agent,
       headers: {
         'Accept': 'application/json',
         'api-ecommerce-auth': this.key
       }
     })
-    .then(response => {
-      let data = response.data
-      console.log(data);
-      return data
-    })
-    .then(response => {
-      // return response.data
-    })
-    .catch(err => {
-      console.error(err);
-    })
+    .then(response => response.data)
+    .catch(error => error);
   };
+
+  // this.getProductByName = function (name) {
+  //   return axios ({
+  //     url: this.createUrl(this.isProd, this.version)+'/products?name=' + name,
+  //     method: 'GET',
+  //     httpsAgent: agent,
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'api-ecommerce-auth': this.key
+  //     }
+  //   })
+  //   .then(response => {
+  //     data = response.data
+  //     //console.log(data);
+  //     return data
+  //   })
+  //   .then(response => {
+  //     // return response.data
+  //   })
+  //   .catch(err => {
+  //     console.error(err);
+  //   })
+  // };
     
   // this.getProductByName = function (name) {  
   //   this.axiosInstance.get('/products?name=' + name, { httpsAgent: agent })
