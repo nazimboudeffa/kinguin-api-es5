@@ -52,8 +52,8 @@ Kinguin = function(key, isProd, version){
     })
   };
 
-  this.getProductByName = function (name) {
-    return axios.get ('https://gateway.kinguin.net/esa/api/v1'+'/products?name=' + name,
+  this.getProductByName = async function (name) {
+    const response = await axios.get ('https://gateway.kinguin.net/esa/api/v1'+'/products?name=' + name,
     {
       httpsAgent: agent,
       headers: {
@@ -61,8 +61,7 @@ Kinguin = function(key, isProd, version){
         'api-ecommerce-auth': this.key
       }
     })
-    .then(response => response.data)
-    .catch(error => error);
+    return response.data;
   };
 
   // this.getProductByName = function (name) {
